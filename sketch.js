@@ -17,6 +17,7 @@ let verb=[]
 let pronoun=[]
 let minV;
 let newP;
+let isSetUp=false;
 
 function preload() {
     reviews = loadJSON('data/AMAZON_FASHION_5.json');
@@ -60,6 +61,7 @@ function setup() {
   text(name,75,50);
   textStyle(BOLD);
   text(newP[Math.floor(Math.random() * 4)]+" "+verb[randomNum]+" "+adj[randomNum]+" "+noun[randomNum],75,100);
+  isSetUp=true;
 }
 
 function wordCount(reviewTxt) {
@@ -93,12 +95,14 @@ function wordCount(reviewTxt) {
 }
 
 function mousePressed(){
-  background(255);
-  image(img, 20, 25,35,35);
-  let randomNum=Math.floor(Math.random() * minV);
-  name=Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5);
-  textStyle(NORMAL);
-  text(name,75,50);
-  textStyle(BOLD);
-  text(newP[Math.floor(Math.random() * 4)]+" "+verb[randomNum]+" "+adj[randomNum]+" "+noun[randomNum],75,100);
+  if(isSetUp){
+    background(255);
+    image(img, 20, 25,35,35);
+    let randomNum=Math.floor(Math.random() * minV);
+    name=Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5);
+    textStyle(NORMAL);
+    text(name,75,50);
+    textStyle(BOLD);
+    text(newP[Math.floor(Math.random() * 4)]+" "+verb[randomNum]+" "+adj[randomNum]+" "+noun[randomNum],75,100);
+  }
 }
